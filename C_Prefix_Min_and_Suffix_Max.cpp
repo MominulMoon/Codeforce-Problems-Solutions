@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define iamspeed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define FOR(i, j, n) for(int i = j; i < n; i++)
+#define trav(i, a) for(auto &i: a) cin >> i;
+#define all(x) x.begin(), x.end()
+#define PB push_back
+#define EB emplace_back
+#define MP make_pair
+#define F first
+#define S second
+#define GCD __gcd
+#define DEBUG(i) cout << "DEBUG " << i << "\n";
+#define sorted(x) is_sorted(x.begin(),x.end())
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<long long> vll;
+
+const ll MOD = 998244353;
+const ll INF = 1e18;
+
+void solve(){
+    int n;
+    cin >> n;
+    vi v(n);
+   FOR(i,0,n) cin>> v[i];
+    int mn=INT_MAX,mx=INT_MIN;
+    set<int> s;
+    FOR(i,0,n){
+        mn=min(mn,v[i]);
+        mx=max(mx,v[n-i-1]);
+        s.insert(mx);s.insert(mn);
+    }
+
+    FOR(i,0,n)
+    {
+        if(s.count(v[i]))
+            cout << 1;
+        else
+            cout <<0 ;
+    }
+
+    cout << endl;
+
+    
+}
+
+int main()
+{
+    iamspeed
+    // freopen("div7.in", "r", stdin);
+    // freopen("div7.out", "w", stdout);
+    // precompute();
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+    // solve();
+    return 0;
+}
+/*
+                   ▄▄▄▄    ▄▄▄       ███▄    █  ██ ▄█▀▄▄▄       ██▓                           
+                  ▓█████▄ ▒████▄     ██ ▀█   █  ██▄█▒▒████▄    ▓██▒                           
+                  ▒██▒ ▄██▒██  ▀█▄  ▓██  ▀█ ██▒▓███▄░▒██  ▀█▄  ▒██▒                           
+                  ▒██░█▀  ░██▄▄▄▄██ ▓██▒  ▐▌██▒▓██ █▄░██▄▄▄▄██ ░██░                           
+                  ░▓█  ▀█▓ ▓█   ▓██▒▒██░   ▓██░▒██▒ █▄▓█   ▓██▒░██░                           
+                  ░▒▓███▀▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ▒ ▒▒ ▓▒▒▒   ▓▒█░░▓                             
+                  ▒░▒   ░   ▒   ▒▒ ░░ ░░   ░ ▒░░ ░▒ ▒░ ▒   ▒▒ ░ ▒ ░                           
+                   ░    ░   ░   ▒      ░   ░ ░ ░ ░░ ░  ░   ▒    ▒ ░                           
+                   ░            ░  ░         ░ ░  ░        ░  ░ ░                             
+                        ░                                                                  
+ ▄████▄   ▒█████  ▓█████▄ ▓█████      █████▒██▓ ███▄    █  ██▓  ██████  ██░ ██ ▓█████ ▓█████▄
+▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▓█   ▀    ▓██   ▒▓██▒ ██ ▀█   █ ▓██▒▒██    ▒ ▓██░ ██▒▓█   ▀ ▒██▀ ██▌
+▒▓█    ▄ ▒██░  ██▒░██   █▌▒███      ▒████ ░▒██▒▓██  ▀█ ██▒▒██▒░ ▓██▄   ▒██▀▀██░▒███   ░██   █▌
+▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌▒▓█  ▄    ░▓█▒  ░░██░▓██▒  ▐▌██▒░██░  ▒   ██▒░▓█ ░██ ▒▓█  ▄ ░▓█▄   ▌
+▒ ▓███▀ ░░ ████▓▒░░▒████▓ ░▒████▒   ░▒█░   ░██░▒██░   ▓██░░██░▒██████▒▒░▓█▒░██▓░▒████▒░▒████▓ 
+░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒ ░░ ▒░ ░    ▒ ░   ░▓  ░ ▒░   ▒ ▒ ░▓  ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░░ ▒░ ░ ▒▒▓  ▒ 
+  ░  ▒     ░ ▒ ▒░  ░ ▒  ▒  ░ ░  ░    ░      ▒ ░░ ░░   ░ ▒░ ▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░ ░ ░  ░ ░ ▒  ▒ 
+░        ░ ░ ░ ▒   ░ ░  ░    ░       ░ ░    ▒ ░   ░   ░ ░  ▒ ░░  ░  ░   ░  ░░ ░   ░    ░ ░  ░ 
+░ ░          ░ ░     ░       ░  ░           ░           ░  ░        ░   ░  ░  ░   ░  ░   ░   
+░                  ░                                                                   ░   
+*/
