@@ -1,4 +1,4 @@
-# Codeforce-Problems
+# Codeforce-Problems-Solutions
 
 This repository contains solutions to various **Codeforces** competitive programming problems implemented in **C++** and **Java**. Each file corresponds to a specific problem, helping you review and learn problem-solving patterns from past Codeforces challenges. :contentReference[oaicite:0]{index=0}
 
@@ -13,7 +13,7 @@ This repository contains solutions to various **Codeforces** competitive program
 To clone this repo locally:
 
 ```bash
-git clone https://github.com/MominulMoon/Codeforce-Problems.git
+git clone https://github.com/MominulMoon/Codeforce-Problems-Solutions.git
 ```
 ## 💡 How to Use
 
@@ -35,3 +35,4 @@ Contributions are welcome! If you solve a new problem or improve a solution:
 - It follows a simple structure for easy navigation.
 
 Happy coding! 💻🎯
+
