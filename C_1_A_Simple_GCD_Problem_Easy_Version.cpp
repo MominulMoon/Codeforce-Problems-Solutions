@@ -67,19 +67,16 @@ void solve()
         }
         else if (i == n - 1)
         {
-            req = GCD(v[i - 1], v[i - 2]);
+            req = GCD(v[i],v[i-1]);
         }
         else
         {
             ll gcd1 = GCD(v[i], v[i - 1]);
             ll gcd2 = GCD(v[i], v[i + 1]);
-            // ll gcd = GCD(gcd1,gcd2);
             req = LCM(gcd1, gcd2);
         }
         if (req != v[i])
             ans++;
-        if (req == v[i])
-            continue;
     }
     cout << ans << ed;
 }
