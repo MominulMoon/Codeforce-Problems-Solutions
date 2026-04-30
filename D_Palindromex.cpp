@@ -1,0 +1,128 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define iamspeed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define FOR(i, j, n) for(int i = j; i < n; i++)
+#define trav(i, a) for(auto &i: a) cin >> i;
+#define all(x) x.begin(), x.end()
+#define reverse_sort(v) sort(all(v),greater<int>())
+#define prnt(v) for(auto&i:v) cout << i << " ";
+#define take(v) for(auto &i : v ) cin >> i
+#define ed  "\n" 
+#define PB push_back
+#define EB emplace_back
+#define MP make_pair
+#define F first
+#define S second
+#define GCD __gcd
+#define LCM(a,b) (a*b)/GCD(a,b)
+#define DEBUG(i) cout << "DEBUG " << i << "\n";
+#define sorted(x) is_sorted(x.begin(),x.end())
+#define BS(v,n) binary_search(v.begin(),v.end(),n)
+#define trans(x,y) transform(all(x),x.begin(),:: y)
+
+typedef unsigned long long ull;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<long long> vll;
+
+const ll MOD = 998244353;
+const ll INF = 1e18;
+const ll NN=1e6+1;
+// vll primes(NN+1,0);
+// void seive(){
+//     primes[0]=primes[1]=1;
+//     for(ll i=2;i*i<=NN;i++){
+//         if(primes[i]==0){
+//             for(ll j=i*i;j<=NN;j+=i){
+//                 primes[j]++;
+//             }
+//         }
+//     }
+// }
+
+
+
+ll max_mex(ll l, ll r,const vector<ll>& a) {
+    ll n2 = a.size();
+    if (l > r || a[l] != a[r]) {
+        return 0;
+    }
+    while (l - 1 >= 0 && r + 1 < n2 && a[l - 1] == a[r + 1]) {
+        l--;
+        r++;
+    }
+    vll cnt(n2 + 1, 0);
+    FOR(i,l,r+1) {
+        if (a[i] <= n2) {
+            cnt[a[i]]++;
+        }
+    }
+    
+    ll mex = 0;
+    while (cnt[mex] > 0) {
+        mex++;
+    }
+    return mex;
+}
+
+void solve() {
+    ll n;
+    cin >> n;
+    vll a(n*2);
+    
+    ll p1 = -1, p2 = -1;
+    
+    FOR(i,0,n*2) {
+        cin >> a[i];
+        if (a[i] == 0) {
+            if (p1 == -1) p1 = i;
+            else p2 = i;
+        }
+    }
+    
+    ll mmex = 0;
+    mmex = max(mmex, max_mex(p1, p1, a));
+    mmex = max(mmex, max_mex(p2, p2, a));
+    ll mid_L = (p1 + p2) / 2;
+    ll mid_R = (p1 + p2 + 1) / 2;
+    mmex = max(mmex, max_mex(mid_L, mid_R, a));
+    
+    cout << mmex << ed;
+}
+
+int main()
+{
+    iamspeed
+    // freopen("div7.in", "r", stdin);
+    // freopen("div7.out", "w", stdout);
+    // precompute();
+    int t=1;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
+/*
+                   ▄▄▄▄    ▄▄▄       ███▄    █  ██ ▄█▀▄▄▄       ██▓                           
+                  ▓█████▄ ▒████▄     ██ ▀█   █  ██▄█▒▒████▄    ▓██▒                           
+                  ▒██▒ ▄██▒██  ▀█▄  ▓██  ▀█ ██▒▓███▄░▒██  ▀█▄  ▒██▒                           
+                  ▒██░█▀  ░██▄▄▄▄██ ▓██▒  ▐▌██▒▓██ █▄░██▄▄▄▄██ ░██░                           
+                  ░▓█  ▀█▓ ▓█   ▓██▒▒██░   ▓██░▒██▒ █▄▓█   ▓██▒░██░                           
+                  ░▒▓███▀▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ▒ ▒▒ ▓▒▒▒   ▓▒█░░▓                             
+                  ▒░▒   ░   ▒   ▒▒ ░░ ░░   ░ ▒░░ ░▒ ▒░ ▒   ▒▒ ░ ▒ ░                           
+                   ░    ░   ░   ▒      ░   ░ ░ ░ ░░ ░  ░   ▒    ▒ ░                           
+                   ░            ░  ░         ░ ░  ░        ░  ░ ░                             
+                        ░                                                                  
+ ▄████▄   ▒█████  ▓█████▄ ▓█████      █████▒██▓ ███▄    █  ██▓  ██████  ██░ ██ ▓█████ ▓█████▄
+▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▓█   ▀    ▓██   ▒▓██▒ ██ ▀█   █ ▓██▒▒██    ▒ ▓██░ ██▒▓█   ▀ ▒██▀ ██▌
+▒▓█    ▄ ▒██░  ██▒░██   █▌▒███      ▒████ ░▒██▒▓██  ▀█ ██▒▒██▒░ ▓██▄   ▒██▀▀██░▒███   ░██   █▌
+▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌▒▓█  ▄    ░▓█▒  ░░██░▓██▒  ▐▌██▒░██░  ▒   ██▒░▓█ ░██ ▒▓█  ▄ ░▓█▄   ▌
+▒ ▓███▀ ░░ ████▓▒░░▒████▓ ░▒████▒   ░▒█░   ░██░▒██░   ▓██░░██░▒██████▒▒░▓█▒░██▓░▒████▒░▒████▓ 
+░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒ ░░ ▒░ ░    ▒ ░   ░▓  ░ ▒░   ▒ ▒ ░▓  ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░░ ▒░ ░ ▒▒▓  ▒ 
+  ░  ▒     ░ ▒ ▒░  ░ ▒  ▒  ░ ░  ░    ░      ▒ ░░ ░░   ░ ▒░ ▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░ ░ ░  ░ ░ ▒  ▒ 
+░        ░ ░ ░ ▒   ░ ░  ░    ░       ░ ░    ▒ ░   ░   ░ ░  ▒ ░░  ░  ░   ░  ░░ ░   ░    ░ ░  ░ 
+░ ░          ░ ░     ░       ░  ░           ░           ░  ░        ░   ░  ░  ░   ░  ░   ░   
+░                  ░                                                                   ░   
+*/
