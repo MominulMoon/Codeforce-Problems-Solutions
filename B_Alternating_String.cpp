@@ -34,10 +34,8 @@ using namespace std;
 
 typedef unsigned long long ull;
 typedef long long ll;
-typedef long double ld;
 typedef vector<int> vi;
 typedef vector<long long> vll;
-typedef vector<ld> vld;
 
 const ll MOD = 998244353;
 const ll INF = 1e18;
@@ -56,27 +54,21 @@ const ll NN = 1e6 + 1;
 
 void solve()
 {
-    ll n, l;
-    cin >> n >> l;
-    vld v(n + 2);
-    FOR(i, 1, n + 1)
+    string s;
+    cin >> s;
+    ll n = s.length();
+    ll ans = 0;
+    FOR(i, 0, n - 1)
     {
-        cin >> v[i];
+        if (s[i] == s[i + 1])
+            ans++;
+        if (ans > 2)
+        {
+            noo;
+            return;
+        }
     }
-    v[0] = 0;
-    v[n + 1] = l;
-    sort(all(v));
-    ld d = 0, lf, rg;
-    FOR(i, 1, n)
-    {
-        lf = (v[i] - v[i - 1]) / 2;
-        rg = (v[i + 1] - v[i]) / 2;
-        d = max(d, max(lf, rg));
-    }
-    d = max(d, (v[1] - v[0]));
-    d = max(d, (v[n + 1] - v[n]));
-
-    cout << fixed << setprecision(10) << d << ed;
+    yess;
 }
 
 int main()
@@ -86,7 +78,7 @@ int main()
         // freopen("div7.out", "w", stdout);
         // precompute();
         int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         solve();

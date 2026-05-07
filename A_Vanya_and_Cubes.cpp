@@ -36,8 +36,8 @@ typedef unsigned long long ull;
 typedef long long ll;
 typedef long double ld;
 typedef vector<int> vi;
-typedef vector<long long> vll;
 typedef vector<ld> vld;
+typedef vector<ll> vll;
 
 const ll MOD = 998244353;
 const ll INF = 1e18;
@@ -56,27 +56,15 @@ const ll NN = 1e6 + 1;
 
 void solve()
 {
-    ll n, l;
-    cin >> n >> l;
-    vld v(n + 2);
-    FOR(i, 1, n + 1)
+    ll n;
+    cin >> n;
+    ll x = 0, cnt = 0;
+    while (cnt <= n)
     {
-        cin >> v[i];
+        x++;
+        cnt = cnt + (x * (x + 1)) / 2;
     }
-    v[0] = 0;
-    v[n + 1] = l;
-    sort(all(v));
-    ld d = 0, lf, rg;
-    FOR(i, 1, n)
-    {
-        lf = (v[i] - v[i - 1]) / 2;
-        rg = (v[i + 1] - v[i]) / 2;
-        d = max(d, max(lf, rg));
-    }
-    d = max(d, (v[1] - v[0]));
-    d = max(d, (v[n + 1] - v[n]));
-
-    cout << fixed << setprecision(10) << d << ed;
+    cout << x - 1 << ed;
 }
 
 int main()
