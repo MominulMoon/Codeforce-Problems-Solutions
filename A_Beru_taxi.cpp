@@ -56,22 +56,21 @@ const ll NN = 1e6 + 1;
 
 void solve()
 {
-    ll n, q;
-    cin >> n;
-    vll v(n);
-    FOR(i, 0, n)
-    {
-        cin >> v[i];
-    }
-    sort(all(v));
+    ld x, y;
+    cin >> x >> y;
+    ll q;
     cin >> q;
+    ld Dmn = 1e6 + 1;
     while (q--)
     {
-        ll x;
-        cin >> x;
-        auto ans = upper_bound(all(v), x);
-        cout << ans - v.begin() << ed;
+        ld a, b, v;
+        cin >> a >> b >> v;
+        a = abs(a - x);
+        b = abs(b - y);
+        ld d = sqrt(a * a + b * b);
+        Dmn = min(Dmn, (d / v));
     }
+    cout << fixed << setprecision(20) << Dmn << ed;
 }
 
 int main()
